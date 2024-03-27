@@ -1,13 +1,20 @@
-import { useFruits } from '../hooks/useFruits.ts'
+import { useConsumables } from '../hooks/useConsumables'
+import DateInputForm from './DateInputForm'
 
 function App() {
-  const { data } = useFruits()
-
+  const { data } = useConsumables()
   return (
     <>
       <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul>
+        <h1>Car Consumables</h1>
+        <ul>
+          {data &&
+            data.map((consumable) => (
+              <li key={consumable.id}>
+                {consumable.name} <DateInputForm />
+              </li>
+            ))}
+        </ul>
       </div>
     </>
   )
