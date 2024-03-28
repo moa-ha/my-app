@@ -1,3 +1,4 @@
+// figure out why it render all the functions twice - can see when console.log
 import {
   useQuery,
   useMutation,
@@ -5,31 +6,26 @@ import {
   MutationFunction,
 } from '@tanstack/react-query'
 import { getConsumables } from '../apis/consumables'
+import { ConsumableData, Consumables } from '../../models/consumables'
 
 export function useConsumables() {
   const query = useQuery({ queryKey: ['consumables'], queryFn: getConsumables })
-  console.log('working')
   return {
     ...query,
     // Extra queries go here e.g. addFruit: useAddFruit()
   }
 }
 
-// export function useFruitsMutation<TData = unknown, TVariables = unknown>(
-//   mutationFn: MutationFunction<TData, TVariables>
-// ) {
-//   const queryClient = useQueryClient()
-//   const mutation = useMutation({
-//     mutationFn,
-//     onSuccess: () => {
-//       queryClient.invalidateQueries({ queryKey: ['fruits'] })
-//     },
-//   })
+export function useAddItem() {
+  const client = useQueryClient()
 
-//   return mutation
-// }
-
-// Query functions go here e.g. useAddFruit
-/* function useAddFruit() {
-  return useFruitsMutation(addFruit)
-} */
+  return useMutation({
+    mutationFn: async ({ item }: { item: ConsumableData }) => {
+      const res = await request.post('/api/v1/consumables').send(item)
+      return res.body as { id: number }
+    },
+    onSuccess: () => {
+      client.invalidateQueries({ queryKey: ['items'] })
+    },
+  })
+}

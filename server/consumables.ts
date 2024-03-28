@@ -1,9 +1,9 @@
-import type { Consumables, ConsumableData } from '../models/consumables.ts'
+import type { ConsumableData, Consumable } from '../models/consumables.ts'
 import consumablesData from './db/consumables-data.ts'
 import * as fs from 'node:fs/promises'
 
 interface Data {
-  consumables: ConsumableData[]
+  consumables: Consumable[]
 }
 
 export async function getConsumable(): Promise<Data> {
@@ -17,4 +17,15 @@ export async function getConsumable(): Promise<Data> {
     }
     throw error
   }
+}
+
+export async function addItem(data: ConsumableData): Promise<void> {
+  const items = await getConsumable()
+  const id = items.length + 1
+
+  const addedItem = { id, ...data }
+  const addedList = [...items, addedItem]
+  const totalList = JSON.stringify(addedList)
+
+  await fs.writeFile('./storage/consumables.json', totalList)
 }
