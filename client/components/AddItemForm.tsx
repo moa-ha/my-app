@@ -4,6 +4,8 @@
 
 import { FormEvent, useCallback, useState } from 'react'
 import { ConsumablesData } from '../../models/consumables'
+import { useAddItem } from '../hooks/useConsumables'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
   onAdd: (data: ConsumablesData) => void
@@ -11,14 +13,14 @@ interface Props {
 
 function AddItemForm(props: Props) {
   const { onAdd } = props
-
+  const navigate = useNavigate()
   const [formState, setFormState] = useState({
     name: '',
     replaced: '',
     tocheck: '',
     atMileage: 0,
   })
-
+  const mutation = useAddItem()
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget
     setFormState((prev) => ({ ...prev, [name]: value }))
@@ -27,6 +29,8 @@ function AddItemForm(props: Props) {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const addedItem = { ...formState }
+    mutation.mutate(addedItem)
+    navigate('/')
     onAdd(addedItem)
   }
   return (
