@@ -2,17 +2,14 @@
 
 //tocheck part to fix to be calculated & mileage input n/a
 
-import { FormEvent, useCallback, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { ConsumablesData } from '../../models/consumables'
 import { useAddItem } from '../hooks/useConsumables'
 import { useNavigate } from 'react-router-dom'
+import SearchBar from './SearchBar'
+import React from 'react'
 
-interface Props {
-  onAdd: (data: ConsumablesData) => void
-}
-
-function AddItemForm(props: Props) {
-  const { onAdd } = props
+function AddItemForm() {
   const navigate = useNavigate()
   const [formState, setFormState] = useState({
     name: '',
@@ -21,22 +18,24 @@ function AddItemForm(props: Props) {
     atMileage: 0,
   })
   const mutation = useAddItem()
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.currentTarget
     setFormState((prev) => ({ ...prev, [name]: value }))
-  }, [])
+  }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const addedItem = { ...formState }
+    console.log('added item: ' + addedItem)
     mutation.mutate(addedItem)
     navigate('/')
-    onAdd(addedItem)
   }
   return (
     <>
-      added item
+      Add Item
       <form onSubmit={handleSubmit}>
+        Item
         <input
           onChange={handleChange}
           type="text"
@@ -44,6 +43,8 @@ function AddItemForm(props: Props) {
           id=""
           name="name"
         />
+        <br></br>
+        Replaced on{' '}
         <input
           onChange={handleChange}
           type="date"
@@ -51,13 +52,8 @@ function AddItemForm(props: Props) {
           id=""
           name="replaced"
         />
-        <input
-          onChange={handleChange}
-          type="text"
-          value={formState.tocheck}
-          id=""
-          name="tocheck"
-        />
+        <br></br>
+        How many miles can you drive with this? Search if you don't know
         <input
           onChange={handleChange}
           type="number"
@@ -65,8 +61,20 @@ function AddItemForm(props: Props) {
           id=""
           name="atMilieage"
         />
+        <br></br>
         <button>Add Item</button>
       </form>
+      <br></br>
+      <SearchBar />
+      <br></br>
+      Check it on
+      <input
+        onChange={handleChange}
+        type="text"
+        value={formState.tocheck}
+        id=""
+        name="tocheck"
+      />
     </>
   )
 }

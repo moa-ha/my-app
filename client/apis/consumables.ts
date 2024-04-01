@@ -5,13 +5,12 @@ import { Consumable, ConsumablesData } from '../../models/consumables'
 
 const rootUrl = '/api/v1/consumables'
 
-export function getConsumables(): Promise<ConsumablesData[]> {
+export function getItems(): Promise<ConsumablesData[]> {
   return request.get(rootUrl).then((res) => {
-    return res.body.consumables
+    return res.body
   })
 }
 
-export function addItem(item: ConsumablesData): Promise<Consumable> {
-  // console.log(item)
-  return request.post(rootUrl).send(item)
+export async function addItem(item: ConsumablesData): Promise<void> {
+  await request.post(rootUrl).send(item)
 }

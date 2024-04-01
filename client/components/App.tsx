@@ -1,6 +1,6 @@
 import { useConsumables } from '../hooks/useConsumables'
 import DateInputForm from './DateInputForm'
-import SearchBar from './SearchBar'
+
 import { Link } from 'react-router-dom'
 
 function App() {
@@ -18,8 +18,6 @@ function App() {
             ))}
         </ul>
         <Link to="/add">Add your item</Link>
-        <br></br>
-        <SearchBar />
       </div>
     </>
   )
