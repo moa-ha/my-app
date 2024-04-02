@@ -7,6 +7,12 @@ router.get('/', async (req, res) => {
   res.json(data)
 })
 
+router.get('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  const data = await consumable.getItemById(id)
+  res.json(data)
+})
+
 router.patch('/', async (req, res) => {
   try {
     const newItem = req.body
@@ -16,5 +22,13 @@ router.patch('/', async (req, res) => {
     res.sendStatus(500)
   }
 })
+
+// router.delete('/', async (req, res) => {
+//   try{
+//     const item = req.body
+//   }catch (e) {
+//     res.sendStatus(500)
+//   }
+// })
 
 export default router

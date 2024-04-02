@@ -23,6 +23,25 @@ export async function getItem(): Promise<Consumable[]> {
   }
 }
 
+export async function getItemById(id: number): Promise<Consumable | undefined> {
+  try {
+    const json = await fs.readFile(
+      Path.join(__dirname, './storage/consumables.json'),
+      'utf-8',
+    )
+    const data = JSON.parse(json)
+
+    return data.find((item: Consumable) => item.id === id)
+  } catch (error: any) {
+    if (error.code === 'ENOENT') {
+      return consumablesData.consumables.find(
+        (item: Consumable) => item.id === id,
+      )
+    }
+    throw error
+  }
+}
+
 export async function addItem(data: ConsumablesData): Promise<void> {
   const items = await getItem()
   const id = items.length + 1
@@ -31,7 +50,20 @@ export async function addItem(data: ConsumablesData): Promise<void> {
   const addedList = [...items, addedItem]
   const result = JSON.stringify(addedList, null, 2)
 
-  // await fs.writeFile('./storage/consumables.json', result)
+  await fs.writeFile(
+    Path.join(__dirname, './storage/consumables.json'),
+    result,
+    'utf-8',
+  )
+}
+
+export async function deleteItem(id: number): Promise<void> {
+  const items = await getItem()
+
+  const addedItem = { id, ...data }
+  const addedList = [...items, addedItem]
+  const result = JSON.stringify(addedList, null, 2)
+
   await fs.writeFile(
     Path.join(__dirname, './storage/consumables.json'),
     result,

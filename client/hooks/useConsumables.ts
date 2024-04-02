@@ -22,3 +22,11 @@ export function useAddItem() {
     onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),
   })
 }
+export function useDeleteItem() {
+  const client = useQueryClient()
+
+  return useMutation({
+    mutationFn: (id: number) => api.deleteItem(id),
+    onSuccess: () => client.invalidateQueries({ queryKey: ['consumables'] }),
+  })
+}
