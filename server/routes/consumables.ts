@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   res.json(data)
 })
 
-router.post('/', async (req, res) => {
+router.patch('/', async (req, res) => {
   try {
     const newItem = req.body
     const data = await consumable.addItem(newItem)

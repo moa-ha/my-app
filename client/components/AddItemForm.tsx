@@ -21,14 +21,14 @@ function AddItemForm() {
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.currentTarget
-    setFormState((prev) => ({ ...prev, [name]: value }))
+    const info = { ...formState, [name]: value }
+    setFormState(info)
   }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const addedItem = { ...formState }
-    console.log('added item: ' + addedItem)
-    mutation.mutate(addedItem)
+    console.log(formState)
+    mutation.mutate(formState)
     navigate('/')
   }
   return (
@@ -59,7 +59,7 @@ function AddItemForm() {
           type="number"
           value={formState.atMileage}
           id=""
-          name="atMilieage"
+          name="atMileage"
         />
         <br></br>
         <button>Add Item</button>

@@ -11,6 +11,6 @@ export function getItems(): Promise<ConsumablesData[]> {
   })
 }
 
-export async function addItem(item: ConsumablesData): Promise<void> {
-  await request.post(rootUrl).send(item)
+export async function addItem(item: ConsumablesData) {
+  return await request.patch(rootUrl).send(item)
 }

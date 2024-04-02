@@ -3,6 +3,7 @@
 
 import { useState } from 'react'
 import { useConsumables } from '../hooks/useConsumables'
+import React from 'react'
 
 interface Props {
   id: number
