@@ -58,11 +58,31 @@ export async function addItem(data: ConsumablesData): Promise<void> {
 }
 
 export async function deleteItem(id: number): Promise<void> {
+  const itemList = await getItem()
+
+  itemList.splice(id - 1, 1)
+
+  const result = JSON.stringify(itemList, null, 2)
+
+  await fs.writeFile(
+    Path.join(__dirname, './storage/consumables.json'),
+    result,
+    'utf-8',
+  )
+}
+export async function editMileage(
+  id: number,
+  data: ConsumablesData,
+): Promise<void> {
   const items = await getItem()
 
-  const addedItem = { id, ...data }
-  const addedList = [...items, addedItem]
-  const result = JSON.stringify(addedList, null, 2)
+  const updatedList = items.map((item) => {
+    if (item.id === id) {
+      return { id, ...data }
+    } else return item
+  })
+
+  const result = JSON.stringify(updatedList, null, 2)
 
   await fs.writeFile(
     Path.join(__dirname, './storage/consumables.json'),

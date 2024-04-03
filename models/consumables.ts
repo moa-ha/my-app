@@ -5,6 +5,10 @@ export interface ConsumablesData {
   atMileage: number
 }
 
+export interface Mileage {
+  id: number
+  data: ConsumablesData
+}
 export interface Consumable extends ConsumablesData {
   id: number
 }

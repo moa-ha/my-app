@@ -2,6 +2,7 @@ import { useConsumables } from '../hooks/useConsumables'
 import DateInputForm from './DateInputForm'
 
 import { Link } from 'react-router-dom'
+import DeleteButton from './DeleteButton.tsx'
 import EditForm from './EditForm.tsx'
 
 function App() {
@@ -15,7 +16,10 @@ function App() {
             data.map((consumable) => (
               <li key={consumable.id}>
                 {consumable.name}
-                <Link to="/delete">delete</Link>
+                <Link to={`${consumable.id}`}>
+                  <button>Edit</button>
+                </Link>
+                <DeleteButton id={consumable.id} />
                 <DateInputForm id={consumable.id} />
               </li>
             ))}

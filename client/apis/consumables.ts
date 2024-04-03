@@ -5,14 +5,15 @@ import { Consumable, ConsumablesData } from '../../models/consumables'
 
 const rootUrl = '/api/v1/consumables'
 
-export function getItems(): Promise<ConsumablesData[]> {
+export function getItems(): Promise<Consumable[]> {
   return request.get(rootUrl).then((res) => {
     return res.body
   })
 }
 
-export function getItemById(id: number): Promise<ConsumablesData[]> {
-  return request.get(`rootUrl/${id}`).then((res) => {
+export function getItemById(id: number) {
+  const url = rootUrl + `/${id}`
+  return request.get(url).then((res) => {
     return res.body
   })
 }
@@ -22,6 +23,11 @@ export async function addItem(item: ConsumablesData) {
 }
 
 export async function deleteItem(id: number) {
-  const url = `rootUrl/${id}`
-  return await request.del(url)
+  const url = rootUrl + `/${id}`
+  return await request.delete(url)
+}
+
+export async function editMileage(id: number, data: ConsumablesData) {
+  const url = rootUrl + `/${id}`
+  return await request.patch(url).send(data)
 }

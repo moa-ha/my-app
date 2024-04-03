@@ -1,72 +1,44 @@
 [
   {
     "id": 1,
-    "name": "Engine Oil",
-    "replaced": "",
-    "tocheck": ""
-  },
-  {
-    "id": 2,
-    "name": "Brake Oil",
-    "replaced": "",
-    "tocheck": ""
-  },
-  {
-    "id": 3,
-    "name": "Mission Oil",
-    "replaced": "",
-    "tocheck": ""
-  },
-  {
-    "id": 4,
-    "name": "Distilled Water",
-    "replaced": "",
-    "tocheck": ""
-  },
-  {
-    "id": 5,
-    "name": "Battery",
-    "replaced": "",
-    "tocheck": ""
-  },
-  {
-    "id": 6,
-    "name": "Wiper Blades",
-    "replaced": "",
-    "tocheck": ""
-  },
-  {
-    "id": 7,
     "name": "Tyre",
-    "replaced": "",
-    "tocheck": ""
-  },
-  {
-    "id": 8,
-    "name": "Alignment",
-    "replaced": "",
-    "tocheck": ""
-  },
-  {
-    "id": 9,
-    "name": "test add function",
     "replaced": "",
     "tocheck": "",
     "atMileage": 40000
   },
   {
-    "id": 10,
-    "name": "asdf",
-    "replaced": "2024-04-04",
+    "id": 2,
+    "name": "Mission Oil",
+    "replaced": "",
     "tocheck": "",
-    "atMileage": 0
+    "atMileage": 80000
   },
   {
-    "id": 11,
-    "name": "erte",
-    "replaced": "2024-04-04",
+    "id": 3,
+    "name": "Engine Oil",
+    "replaced": "",
     "tocheck": "",
-    "atMileage": 0,
-    "atMilieage": "-1"
+    "atMileage": 10000
+  },
+  {
+    "id": 4,
+    "name": "Brake Oil",
+    "replaced": "",
+    "tocheck": "",
+    "atMileage": 40000
+  },
+  {
+    "id": 5,
+    "name": "Distilled Water",
+    "replaced": "",
+    "tocheck": "",
+    "atMileage": 20000
+  },
+  {
+    "id": 6,
+    "name": "Battery",
+    "replaced": "",
+    "tocheck": "",
+    "atMileage": 50000
   }
 ]

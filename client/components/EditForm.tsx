@@ -1,64 +1,66 @@
-// users can add items their own
+import * as hook from '../hooks/useConsumables'
 
+import { useNavigate, useParams } from 'react-router-dom'
 import { FormEvent, useState } from 'react'
-import { useAddItem } from '../hooks/useConsumables'
-import { useNavigate } from 'react-router-dom'
-import SearchBar from './SearchBar'
-import React from 'react'
 
-function AddItemForm() {
+export default function EditForm() {
   const navigate = useNavigate()
+
+  const mutation = hook.useEditMileage()
+
+  const id = Number(useParams().id)
+
+  const { data } = hook.useGetItemById(id)
+
   const [formState, setFormState] = useState({
-    name: '',
+    name: data?.name,
     replaced: '',
     tocheck: '',
-    atMileage: 0,
+    atMileage: data?.atMileage,
   })
-  const mutation = useAddItem()
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.currentTarget
-    const info = { ...formState, [name]: value }
-    setFormState(info)
+    const input = { ...formState, [name]: value }
+    setFormState(input)
   }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    console.log(formState)
     mutation.mutate(formState)
+    console.log(formState)
+    console.log(data)
+
     navigate('/')
   }
   return (
     <>
       <form onSubmit={handleSubmit}>
-        Which item do you want to get notice for?
+        You can normally drive {data?.atMileage}km but we know it depends cars!
+        <span>You can call it whatever you want!</span>
         <input
           onChange={handleChange}
           type="text"
           value={formState.name}
           id=""
           name="name"
+          placeholder="which item?"
         />
-        <br></br>
-        How many miles can you drive with this?
+        How far can you drive with this item?
         <input
           onChange={handleChange}
           type="number"
           value={formState.atMileage}
           id=""
           name="atMileage"
+          placeholder={data?.atMileage || 0}
         />
-        <br></br>
-        <span>
-          Search if you don't know
-          <SearchBar />
-        </span>
-        <br></br>
-        <button>Add Item</button>
+        km
       </form>
-      <br></br>
+
+      <button id={id} onClick={handleSubmit}>
+        save
+      </button>
     </>
   )
 }
-
-export default AddItemForm
