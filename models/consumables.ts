@@ -2,7 +2,7 @@ export interface ConsumablesData {
   name: string
   replaced: string
   tocheck: string
-  atMileage: number
+  atMileage?: number
 }
 
 export interface Mileage {

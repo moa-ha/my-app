@@ -29,5 +29,6 @@ export async function deleteItem(id: number) {
 
 export async function editMileage(id: number, data: ConsumablesData) {
   const url = rootUrl + `/${id}`
-  return await request.patch(url).send(data)
+  const input = { id, ...data }
+  return await request.patch(url).send(input)
 }

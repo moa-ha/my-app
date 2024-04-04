@@ -2,7 +2,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
 import * as api from '../apis/consumables'
-import { ConsumablesData, Mileage } from '../../models/consumables'
+import { Consumable, ConsumablesData, Mileage } from '../../models/consumables'
 
 export function useConsumables() {
   const query = useQuery({
