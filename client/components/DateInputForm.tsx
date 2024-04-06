@@ -13,6 +13,7 @@ function DateInputForm({ id }: Props) {
   const { data } = useConsumables()
   const [date, setDate] = useState('')
   const [isShow, setIsShow] = useState(false)
+  const [result, setResult] = useState('')
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     setDate(event.target.value)
@@ -22,21 +23,21 @@ function DateInputForm({ id }: Props) {
     event.preventDefault()
     console.log('result: ' + formattedDate)
     setIsShow(true)
-    // setDate('')
+    setResult(date)
   }
 
   // NZ average mileage per year is 15000.
   const days = 365
   const average = 15000
-  let mileage = 0
+  let km = 0
   const dateObject = new Date(date)
 
   function getPeriod(id: number) {
     if (data) {
       for (let i = 0; i < data.length; i++) {
         if (data[i].id == id) {
-          mileage = data[i].atMileage
-          return Math.floor(Number((mileage / average) * days))
+          km = data[i].atMileage
+          return Math.floor(Number((km / average) * days))
         }
       }
     }
@@ -54,14 +55,19 @@ function DateInputForm({ id }: Props) {
       <form onSubmit={handleSubmit}>
         <label htmlFor="datePicker"> Select a date: </label>
         <input
+          className="input-field"
           onChange={handleChange}
           type="date"
           name="date"
           id="datePicker"
           value={date}
         />
-        <button>save</button>
-        <p>check on {isShow && <span>{formattedDate}</span>} </p>
+        <button className="button">save</button>
+        <p>
+          check it on{' '}
+          {isShow && <span className="returned-date">{formattedDate}</span>} ❕
+          <span className="returned-date">{result}</span>
+        </p>
       </form>
     </>
   )

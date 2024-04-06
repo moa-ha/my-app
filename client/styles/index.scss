@@ -4,3 +4,80 @@ html,
 body {
   font-family: 'Montserrat', sans-serif;
 }
+
+.container {
+  background-color: #333;
+  // padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #333;
+  padding: 10px 0;
+}
+
+.navbar-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-item {
+  margin-right: 10px;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.navbar-link:hover {
+  background-color: #555;
+}
+
+.item {
+  flex: 1 0 calc(25% - 20px);
+  // margin-bottom: 20px;
+  // background-color: #f0f0f0;
+  font-size: 20px;
+  font-weight: bold;
+  // font-style: italic;
+  // text-decoration: wavy;
+  // text-shadow: 2px 2px 4px #666
+  
+}
+
+.button {
+  background-color: transparent;
+  color: white;
+  padding: 8px 16px;
+  border: 1px solid white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.input-field {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #007bff; /* 포커스됐을 때의 색상 */
+}
+
+.returned-date {
+  background-color: white;
+}
