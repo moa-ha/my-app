@@ -3,7 +3,7 @@
 import request from 'superagent'
 import { Consumable, ConsumablesData } from '../../models/consumables'
 
-const rootUrl = '/api/v1/consumables'
+const rootUrl = '/api/v1/items'
 
 export function getItems(): Promise<Consumable[]> {
   return request.get(rootUrl).then((res) => {

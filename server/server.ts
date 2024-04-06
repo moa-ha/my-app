@@ -7,8 +7,7 @@ const server = express()
 
 server.use(express.json())
 
-// server.use('/api/v1/', home)
-server.use('/api/v1/consumables', consumables)
+server.use('/api/v1/items', consumables)
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))

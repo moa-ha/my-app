@@ -4,7 +4,7 @@ import AddItemForm from '../components/AddItemForm.tsx'
 import { ConsumablesData } from '../../models/consumables.ts'
 import { useNavigate } from 'react-router-dom'
 
-export default function NewItem() {
+export default function AddItem() {
   const newItem = useAddItem()
   const navigate = useNavigate()
 

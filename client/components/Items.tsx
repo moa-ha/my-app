@@ -1,11 +1,11 @@
-import { useConsumables } from '../hooks/useConsumables'
-import DateInputForm from './DateInputForm'
+import { useConsumables } from '../hooks/useConsumables.ts'
+import DateInputForm from './DateInputForm.tsx'
 
 import { Link } from 'react-router-dom'
 import DeleteButton from './DeleteButton.tsx'
 import EditForm from './EditForm.tsx'
 
-function App() {
+function Items() {
   const { data } = useConsumables()
   return (
     <>
@@ -24,10 +24,10 @@ function App() {
               </li>
             ))}
         </ul>
-        <Link to="/add">Add your item</Link>
+        <Link to="/items/add">Add your item</Link>
       </div>
     </>
   )
 }
 
-export default App
+export default Items

@@ -26,7 +26,7 @@ function AddItemForm() {
     e.preventDefault()
     console.log(formState)
     mutation.mutate(formState)
-    navigate('/')
+    navigate('/items')
   }
   return (
     <>

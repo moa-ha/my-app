@@ -37,7 +37,7 @@ export default function EditForm() {
     e.preventDefault()
     mutation.mutate(formState)
 
-    navigate('/')
+    navigate('/items')
   }
   return (
     <>
