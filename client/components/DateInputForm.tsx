@@ -12,7 +12,6 @@ interface Props {
 function DateInputForm({ id }: Props) {
   const { data } = useConsumables()
   const [date, setDate] = useState('')
-  const [isShow, setIsShow] = useState(false)
   const [result, setResult] = useState('')
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -22,8 +21,8 @@ function DateInputForm({ id }: Props) {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     console.log('result: ' + formattedDate)
-    setIsShow(true)
-    setResult(date)
+
+    setResult(formattedDate)
   }
 
   // NZ average mileage per year is 15000.
@@ -36,7 +35,7 @@ function DateInputForm({ id }: Props) {
     if (data) {
       for (let i = 0; i < data.length; i++) {
         if (data[i].id == id) {
-          km = data[i].atMileage
+          km = Number(data[i].atMileage)
           return Math.floor(Number((km / average) * days))
         }
       }
@@ -64,9 +63,8 @@ function DateInputForm({ id }: Props) {
         />
         <button className="button">save</button>
         <p>
-          check it on{' '}
-          {isShow && <span className="returned-date">{formattedDate}</span>} ❕
-          <span className="returned-date">{result}</span>
+          check it on
+          <span className="returned-date">{result}</span>❕
         </p>
       </form>
     </>
