@@ -25,7 +25,9 @@ function Items() {
                 </li>
               ))}
           </ul>
-          <Link to="/items/add">Add your item</Link>
+          <Link to="/items/add">
+            <button className="button">Add your item</button>
+          </Link>
         </div>
       </div>
     </>
