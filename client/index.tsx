@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
     <Auth0Provider
       domain="harakeke-2024-moa.au.auth0.com"
       clientId="NRHrjry6z19ssuiWwYH5cPYRA7DuJf1r"
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+        audience: 'https://my-app/api',
+      }}
     >
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />

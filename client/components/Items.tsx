@@ -9,7 +9,7 @@ function Items() {
   return (
     <>
       <div className="app">
-        <h1>WWW</h1>
+        <h1>Consumable Items</h1>
         <div className="container">
           <ul>
             {data &&
