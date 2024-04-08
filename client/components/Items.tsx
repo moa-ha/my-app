@@ -14,9 +14,9 @@ function Items() {
           <ul>
             {data &&
               data.map((consumable) => (
-                <li className="item" key={consumable.id}>
+                <li key={consumable.id}>
                   <Link to={`${consumable.id}`}>
-                    <button className="button">Edit</button>
+                    <button className="button right">Edit</button>
                   </Link>
                   <DeleteButton id={consumable.id} />
                   <br></br>
@@ -26,7 +26,7 @@ function Items() {
               ))}
           </ul>
           <Link to="/items/add">
-            <button className="button">Add your item</button>
+            <button className="button right">Add your item</button>
           </Link>
         </div>
       </div>

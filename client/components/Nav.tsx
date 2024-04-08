@@ -25,7 +25,7 @@ export default function Nav() {
   return (
     <>
       <nav className="navbar">
-        <p className="right">
+        <p className="sign-in">
           <IfAuthenticated>
             <button className="button" onClick={handleSignOut}>
               Sign out
@@ -38,20 +38,20 @@ export default function Nav() {
             </button>
           </IfNotAuthenticated>
           <br></br>
-          Save your maintenance info by signing in
+          Sign in to save your maintenance record
         </p>
         <ul className="navbar-list">
-          <li className="navbar-item">
+          <li>
             <Link to="/" className="navbar-link">
               Inspection
             </Link>
           </li>
-          <li className="navbar-item">
+          <li>
             <Link to="/items" className="navbar-link">
               Consumables
             </Link>
           </li>
-          <li className="navbar-item">
+          <li>
             <Link to="/" className="navbar-link">
               Service Center near me
             </Link>

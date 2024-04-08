@@ -64,7 +64,7 @@ function DateInputForm({ id }: Props) {
         <button className="button">save</button>
         <p>
           check it on
-          <span className="returned-date">{result}</span>❕
+          <span className="returned-date"> {result}</span>❕
         </p>
       </form>
     </>

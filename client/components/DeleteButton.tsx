@@ -1,3 +1,5 @@
+//TODO: make it alert to double check 'delete' or not
+
 import * as hook from '../hooks/useConsumables'
 
 export default function DeleteButton({ id }: { id: number }) {
@@ -9,7 +11,7 @@ export default function DeleteButton({ id }: { id: number }) {
     <button
       id={String(id)}
       onClick={handleDelete}
-      className="button"
+      className="button right"
       aria-label="delete button"
     >
       Delete
