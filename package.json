@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
+    "@googlemaps/markerclusterer": "^2.5.3",
+    "@types/googlemaps": "^3.43.3",
     "express": "^4.17.2",
     "knex": "^2.5.1",
     "sqlite3": "^5.1.6",

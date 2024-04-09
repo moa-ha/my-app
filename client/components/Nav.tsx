@@ -52,7 +52,7 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            <Link to="/" className="navbar-link">
+            <Link to="/map" className="navbar-link">
               Service Center near me
             </Link>
           </li>

@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
 
 html, 
-body {
+body, footer {
   font-family: 'Montserrat', sans-serif;
   background-color: #333;
   color: white;
-
 }
 
 .container {
@@ -86,4 +85,9 @@ li {
 .input-field:focus {
   outline: none;
   border-color: #007bff; 
+}
+
+footer {
+  position:fixed;
+  bottom: 0px;
 }

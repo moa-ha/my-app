@@ -54,7 +54,7 @@ function AddItemForm() {
           <SearchBar />
         </span>
         <br></br>
-        <button>Add Item</button>
+        <button className="button">Add Item</button>
       </form>
       <br></br>
     </>

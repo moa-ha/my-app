@@ -4,11 +4,13 @@ import Layout from './components/Layout'
 import Items from './components/Items'
 import AddItemForm from './components/AddItemForm'
 import EditForm from './components/EditForm'
+import MapMarker from './components/MapMarker'
 
 export default createRoutesFromElements(
   <Route path="/" element={<Layout />}>
     <Route path="/items" element={<Items />} />
     <Route path="/items/add" element={<AddItemForm />} />
     <Route path="/items/:id" element={<EditForm />} />
+    <Route path="/map" element={<MapMarker />} />
   </Route>,
 )

@@ -9,7 +9,12 @@ function Items() {
   return (
     <>
       <div className="app">
-        <h1>Consumable Items</h1>
+        <h2>
+          Consumable Items
+          <Link to="/items/add">
+            <button className="button right">Add your item</button>
+          </Link>
+        </h2>
         <div className="container">
           <ul>
             {data &&
@@ -25,9 +30,6 @@ function Items() {
                 </li>
               ))}
           </ul>
-          <Link to="/items/add">
-            <button className="button right">Add your item</button>
-          </Link>
         </div>
       </div>
     </>

@@ -25,7 +25,9 @@ function SearchBar() {
         name="name"
         placeholder="Find out how many miles you could drive with this!"
       />
-      <button onClick={searchOnGoogle}>Go to Google result</button>
+      <button className="button" onClick={searchOnGoogle}>
+        Go to Google result
+      </button>
     </>
   )
 }
